@@ -1,0 +1,379 @@
+第一章
+1.	创建数据库工具
+2.	oracle默认系统账户，其中最高权限管理员账号为SYS。
+第二章：
+1.	ORALCE数据库的物理存储结构主要包括什么文件。（数据文件，控制文件，重做日志文件，其他文件）
+2.	控制文件一般存放在不同磁盘，且至少两个。
+3.	哪个文件记录了数据库的所有变化并仅在实例恢复时被使用。（重做日志文件）
+4.	Oracle逻辑结构构成及关系，数据块大小与操作系统有关
+5.	（表空间的大小等于构成该表空间的所有数据文件大小的总和）
+6.	写入外存的日志文件上，需要调用的后台进程为什么（LGWR）
+7.	将数据从内存写入外存的数据文件上，需要调用的后台进程为。DBwn
+8.	如果一个服务器进程非正常终止，则Oracle系统会使用什么 进程来释放它所占用的资源。（process monitorＰＭＯＮ）
+9.	系统全局区的英文缩写（SGA SYSTEM GLOBAL AREA）
+10.	系统全局区包括区域有哪些 ( 数据缓冲区，日志缓冲区，共享池，大型池，java池)
+11.	解析后的sql语句会缓存到下面的SGA哪个区域中？（共享池）
+12.	数据库结构的描述和定义是DBMS运行的基本依据，他们存储于什么中（数据字典）
+13.	在orcle数据库中，什么 用户模式存储数据字典表和视图对象。（system）  
+第三章：
+1.	在SQL*Plus中链接数据库时，可以使用CONNECT命令，正确格式是什么(conn sys/31415926 as sysdba)
+2.	退出oracle的SQLPLUS环境，需要使用什么命令(exit)
+3.	查看表结构时，所使用什么命令 (describe)
+4.	执行语句SAVE scott_emp_query.sql APPEND，执行结果表示什么。（将file附加到scott_emp_query.sql）
+5.	使用SQL*Plus中的什么命令，可以将文件中的内容检索到缓冲区，并且不执行。(Get filename LIST)(使用Get 命令读取文件到缓冲区)
+6.	如果希望控制列的显式格式，使用的命令（column 列名 选项）
+7.	创建简单报表时，分别为报表设置页眉和页脚信息，使用什么命令。(ttitle btitle)
+
+第四章：
+1.	表空间的状态属性主要有什么(online offline,read only,read write)
+2.	删除表空间的命令(drop tablespace)
+3.	创建临时表空间的语句（	create tablespace 表空间名）
+4.	创建临时表空间需要使用Temporary关键字，创建大文件表空间需要使用create bigfile tablespace 表空间名 关键字，创建撤消表空间需要使用 create undo tablespace关键字  
+5.	ORACLE中用户默认的永久性表空间为system，默认的临时表空间为temp。
+6.	Oracle中管理撤消表空间的方式有什么 。(rollrback segment undo,RSU回退段撤销管理和自动撤销管理（System managed  UNDO）)
+ 
+第五章：
+1.	Number存储数据类型
+2.	在字符串数据分别存放在char（）和varchar2（）类型的字段中，其实际长度为什么。
+3.	DDL语言包括什么操作。TURNCATE,RENAME,DROP,ALTER,CREATE.（参考第七章p140表7-2）
+4.	修改oracle数据库对象的命令 
+5.	Oracle数据库中，什么命令可以删除整个表中的数据，并且
+6.	UNIOUE约束的含义  指唯一约束，要求列中不允许出现重复值                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+8.	添加PRIMARY KEY 约束条件，应该使用的ALTER TABLE语句
+9.	在关系数据库中，建立数据库表时，将年龄字段限制在12-20岁之间的约束为什么（5）between 操作符
+10.	为表定义一个CHECK约束，希望该约束能对表中已存储的数据，以及以后向表中添加或修改的数据都进行检查，则应该将该约束设置哪种状态
+11.	在列的取值较少且重复率较高的列上，适合创建什么索引。Unique索引
+12.	创建视图中FORCE|NOFORCE关键字：
+CREATE [FORCE | NOFORCE] [OR REPLACE] VIEW 视图名称 [(别名1,别名2,...)]
+AS
+13.	使用如下语句创建一个视图：
+CREATE VIEW 	test_view AS
+SELECT stu.studname,stu.stuage+1 newage,cla.claname
+FROM student stu LEFT JOIN class cla ON stu.claid=cla.claid;
+请问test_view视图中哪些列是可更新的？
+
+A.stuname 
+B.stuname、newage 
+C.stuname、claname 
+D.stuname、newage、claname
+
+
+14.	视图中的列并不都支持DML操作，通过什么数据字典可以了解视图中哪些列是可以更新的。
+15.	可以使用哪些伪列来访问序列 nextval和currentval
+16.	创建序列的方法，如果创建一个序列，用于为表的主键列生成主键值，则创建该序列时应该指定哪种参数？
+17.	创建同义词（公有，私有）。
+
+第七、八章：
+1.	Select语句中对结果集中的重复行保留和去除分别使用什么关键字。（distinct去掉重复值，保留的话用默认使用all）
+2.	在SELECT语句中，HAVING子句的作用是。（having子句可以用来接收group by,where,from的句子输出）
+3.	用来判断值是否为空的操作符是什么（IS NULL）
+4.	Like操作符的通配符 %
+5.	分组查询（group by having）
+6.	to_char()字符转换函数
+7.	如果要统计表中有多少行记录，应该使用哪个聚合函数。Count(x)
+8.	哪个聚合函数可以把一个列中的所有值相加求和sum(x)
+9.	事务的特性（ 原子性、一致性、隔离性、持久性）
+10.	提交一个事务使用关键字是什么。commit
+11.	若将雇员表中的所有行连接到雇员参考表中的所有行，应使用什么连接。笛卡尔乘积
+12.	为具有相同名称的列字段进行记录匹配，不必指定任何同等链接条件的是自然连接。
+13.	若将雇员表与部门表进行基于部门号相等的连接查询，并且保留两个表中不符合连接条件的行，应使用等值连接。
+14.	集合操作符有什么。
+
+1. union：对两个结果集进行并集操作，不包括重复行，同时进行默认规则的排序；
+2. union All：对两个结果集进行并集操作，包括重复行，不进行排序；
+3. intersect：对两个结果集进行交集操作，不包括重复行，同时进行默认规则的排序；
+4. minus：对两个结果集进行差操作，不包括重复行，同时进行默认规则的排序。
+
+第九章：
+1.	PL/SQL语言中的基本逻辑结构包括：
+
+DECLARE Ddeclaration;
+BEGIN
+	Excutable_statements;
+	EXCEPTION exception_handing_statements;
+END;
+/
+
+
+2.	PL/SQL块中直接使用的SQL命令：DML，DCL。不能直接（间接）使用的SQL命令：DDL
+3.	什么是合法的变量名？
+4.	怎样正确地声明一个常量？ 
+5.	定义PL/SQL记录的语法TYPE recordname IS RECORD
+6.	PL/SQL代码段中注释符号是什么。单行注释直接在代码前边加-- /* */ 
+7.	IF条件语句中的关键字是什么 。IF/ELSIF/ELSE/THEN/END IF
+8.	打开游标的命令为OPEN cursor_name(参数值)
+9.	当FETCH语句从游标获得数据时，是什么含义。检索游标，从结果集上获取单行数据并保存到定义的变量中。
+10.	游标属性有哪些 %found/%notfound/isopen/%rowcount
+11.	使用游标的什么属性可以获取SELECT语句当前检索到的行数 %ROWCOUNT
+12.	要更新游标结果集中的当前行，应该使用什么子句。 
+13.	显式游标：通过cursor命令定义的都是显式游标
+隐式游标： 用户不能直接命名和控制此类游标，
+14.	带参数游标的打开：已知游标定义
+OPEN 游标名（实参）
+FOR 循环变量 IN 游标名(实参) LOOP …  END LOOP;
+15.	.P216 预定义异常：VALUE_ERROR，（发生算术，转换，截断或大小约束错误）。ZERO_DIVIDE，（试将0作为除数）SELF_IS_FULL（试图在空对象中调用），STORAGE_ERROR（内存出现错误或者已经用完）的含义。（p216表9-2）
+16.	PL/SQL程序设计中，抛出自定义异常的子句是什么。 RAISE_APPLICATION_ERROR(ERROR_NUMBER,ERROR_MESSAGE)
+
+第十章
+1.	哪个语句可以在SQL*PLUS中直接调用一个存储过程。
+EXECUTE update_emp;call update_emp;
+2.	存储过程中参数的有效模式有什么。(10)
+3.	带参数的过程调用的方法及参数传递的方式 
+4.	通过数据字典user_source查询存储过程p228
+5.	函数头部中的RETURN语句的作用是什么。指定返回值的数据类型（不能指定确定精度）
+6.	DML触发器的触发事件：insert,delete,update p233
+7.	行级触发器定义新数据与旧数据的方法。Update student set sage=26
+8.	INSTEAD OF触发器用于 执行一个替代操作来代替触发事件的操作。
+9.	修改触发器应该使用哪些语句。Or replace
+10.	哪个用户拥有所有内置的程序包。SYS
+11.	包规范和包体中包括的内容 create package
+
+第十二章 
+1.	创建用户时，没有指定表空间时oracle表空间分配给用户作为默认表空间是。用户的默认永久性表空间为system,默认临时表空间为temp
+
+2.	设置用户口令过期的命令 password expire
+3.	如何授权可以使用户连接到ORACLE数据库，但不能创建表。（12）grant session
+4.	数据对象权限有哪些。（12）
+5.	对系统权限和对象权限区别:系统权限是对整个Oracle系统的操作权限，对象权限是指用户对数据库中对象的操作权限。
+6.	授权语句：grant
+7.	向用户授予系统权限时，使用with admin option选项表示该用户可以将此系统权限再授予其他用户。
+8.	 角色的概念。Oracel数据库将一组相关的权限授予某个角色，然后将这个角色授予需要的用户，拥有该角色的用户拥有该角色的所有权限。
+9.	禁用和启用角色应该使用SET ROLE语句。
+
+程序题：	
+1.	
+SQL> DECLARE
+  2  a  NUMBER := 10 ;
+  3  b  NUMBER := 0 ;
+  4  BEGIN
+  5      IF a  > 2 THEN
+  6        b :=1;
+  7      ELSIF a > 4 THEN
+  8            b := 2 ;
+  9      ELSE
+ 10            b := 3 ;
+ 11      END IF ;
+ 12      DBMS_OUTPUT.PUT_LINE (b) ;
+ 13  END ;
+
+b=1
+
+2.	
+SQL> DECLARE
+  2  i  BINARY_INTEGER := 1 ;
+  3  BEGIN ;
+  4    WHILE i >= 1 ;
+  5      LOOP
+  6             i  :=  i  + 1 ;
+  7             DBMS_OUTPUT.PUT_LINE (i) ;
+  8       END LOOP ;
+  9  END ;
+
+1+2+3+4+…+i
+SQL>declare
+  2  type 类型is table of scott.emp%rowtype;
+  3  index by binary_integer;
+  4  变量 类型;
+  5  begin
+  6    变量(1).empno:=a;
+  7    变量(1).ename:=’b’;
+  8    变量(1).job:=’c’;
+  9    变量(1).sal:=d;
+ 10    dbms_output.put_line(变量(1).empno||’,’||
+变量(1).ename||’,’||变量(1).job||’,’||
+变量(1).sal);
+ 11  end;
+ 12  /
+abcd
+
+3.	
+declare
+  v_sal number(7,2);
+  v_ename varchar2(20):=‘clark’;
+    begin
+      select sal into v_sal 
+from scott.emp
+   where lower(ename)=lower(v_ename);
+     if v_sal< 2000 then
+        update scott.emp set sal=v_sal+200 
+        where lower(ename)=lower(v_ename);
+     end if;
+   end;
+ 12  /
+
+过程理解：控制结构，条件分支语句，简单条件判断：
+如果scott.emp中sal小于2000，就把符合这个条件的ename小写（ename要改成V_ename吗？），sal加上200.
+  
+4.	游标：对结果集单独的行进行操作需要用游标
+declare
+	cursor emp_cursor is select *from scott.emp for update;
+	record_emp scott.emp%rowtype;
+begin
+	open emp_cursor;打开游标
+	loop
+		fetch emp_cursor into record_emp;检索游标
+		exit when emp_cursor%notfound;--当游标无返回记录时，推出循环
+		if record_emp.deptno=a then
+			delete from scott.emp where current of emp_cursor;
+		end if;
+	end loop;
+	close emp_cursor;关闭游标
+end;
+
+过程理解：
+5.	函数 
+create or replace function avg_sal
+(no scott.emp.deptno%type)
+return number
+is
+   avgsal number(7,2);
+begin
+   select avg(sal) into avgsal from scott.emp where deptno=no;
+   if avgsal is not null then
+      return avgsal;
+   else
+      avgsal:=-1;
+      return avgsal;
+   end if;
+end;
+/
+调用函数
+begin
+  dbms_output.put_line(avg_sal(XX));
+end;
+/
+
+理解：把每个部门的平均工资，
+或
+var salary number;    --自定义变量名称
+exec :salary:=avg_sal(XX);
+print salary;
+
+6.	触发器
+create or replace trigger duplicate_emp
+	after update or insert or delete on scott.emp
+	for each row
+	begin
+		if inserting then
+			insert into employee values (:new.empno,…);
+		elsif deleting then
+			delete from employee where empno=:old.empno;
+		else
+			update employee set empno=:new.empno,…
+where empno=:old.empno;
+		end if;
+	end;
+	/
+过程理解：	创建after update 触发器，按要求插入或者删除每一行，在record表中记录修改操作，并保存修改前的数据。当对Scott.emp进行插入操作时,在employee 表中插入增加的值，当对Scott.emp进行改动操作时，在employee中记录旧的名字和新增的名字，在对scott.emp进行删除操作时，在employee表中记录被删除的名字
+7.	触发器
+create  or replace trigger my_tri
+after startup on database
+begin
+   insert into sysevent_table 
+values(ora_login_user,ora_sysevent,sysdate);
+end;
+结果：插入一条记录
+登陆用户，系统事件，系统日期 
+
+8.	
+select deptno,dname,from scott.dept
+where deptno=(
+select deptno from(
+  selct deptno,avg(sal) avg_sal from scott.emp group by deptno) e
+  where avg_sal=(
+    select max(avg_sal) from(
+      select avg(sal) avg_sal,deptno from scott.emp group by deptno) e 
+      )
+      );
+
+结果：
+Deptno dename
+  
+9.	declare
+    v_d number:=10;
+    v_dn varchar2(20);
+  begin
+    while v_d<=30
+    loop
+      select dname into v_dn from scott.emp
+      where deptno=v_d;
+      dbms_output.put_line(v_d||':'v_dn);
+      v_dn:=v_d+10;
+    end loop;
+    end;
+    / 
+ 
+10：游标
+declare
+  cursor cursor_emp(deptid number:=10)
+  is
+  select * from scott.emp where deptno=deptid;
+begin
+  for row_emp in cursor_emp loop
+     dbms_output.put_line(row_emp.empno||':'row_emp.ename||','row_emp.deptno);
+  end loop;
+  end;
+  /
+
+11.	 创建如下函数：
+ create or replace function a_s(no scott.emp.deptno%type)
+ return number
+ is
+    asal number(7,2);
+  begin
+    delect avg(sal) into assal from scott.emp where deptno;
+    if asal is not null then return asal;
+    else
+      asal:=-1;
+      return asal;
+    end if;
+  end;
+  /
+写出执行调用语句后的结果，
+ begin
+    dbms_uotput.put_line(a_s(30));
+    end if;
+  end;
+  /
+12.	
+select deptno,avg(sal) from scott.emp;
+group by deptno
+having avg(sal)(
+(select max(avg(sal)) from scott.emp
+group by deptno);
+
+13.
+declare 
+v_count number(4);
+begin
+    select count(*) into v_count from scott.emp
+    where deptno=20;
+    case
+        where v_count=0 then
+           dbms_uotput.put_line('0');
+        else
+           dbms_uotput.put_line(v_count);
+        end case;
+    end;
+    /
+  
+
+14.
+create or replace trigger tri1
+after logon on schema
+begin'
+  uinsert into u_l values(ora_login_user,sysdata);
+end;
+ /
+Schema是私有创建
+15.	
+ create or replace trigger insert_view
+ instead of insert on emp_view_namesal
+ declare 
+  v_empno emp.empno%type;
+begin
+   select max(empno)+1 into v_empo from emp;
+   insert into emp(empno,ename,sal) values(v_empno,:new.ename,:new.sal);
+end;
+/
