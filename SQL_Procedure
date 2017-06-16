@@ -1,0 +1,68 @@
+------------------------------------------
+create or replace function get_salary(
+v_dept_no number,
+emp_count out number
+)
+return number is v_sum number;
+begin
+select sum(salary),count(*) into v_sum,emp_count from employees e
+ where e.department_id=v_dept_no;
+ return v_sum;
+ exception
+ when no_data_found then
+ insert into myexception(exp_info)
+ values('数据没有找到');
+ when others then
+  insert into myexception(exp_info)
+ values('有数据,但是有其它异常');
+end;
+
+----------------------------------------
+
+declare 
+v_sum_salary number;
+v_num_emp number;
+begin
+v_sum_salary :=get_salary(30,v_num_emp);
+insert into myexception(empno,comments)
+values(v_sum_salary,to_char(v_num_emp));
+end;
+-------------------------------------------
+declare 
+v_sum_salary number;
+v_num_emp number;
+begin
+v_sum_salary :=get_salary(v_dept_no=>50,emp_count=>v_num_emp);
+insert into myexception(empno,comments)
+values(v_sum_salary,to_char(v_num_emp));
+end;
+---------------------------------------------------
+create or replace function get_student(
+    v_name varchar2,
+    v_age integer
+)
+return varchar2
+as
+v_student varchar2(100);
+begin
+v_student :=v_name||' age is '||v_age;
+return v_student;
+end;
+
+---------------------------------------------------
+declare 
+ v_stu varchar2(100);
+ begin
+ v_stu := get_student('jerry',29);
+ insert into myexception(exp_info)
+ values(v_stu);
+ end;
+-----------------------------------------------------
+create or replace procedure p_logon
+is
+begin
+insert into myexception(exp_info,comments)
+values(user,to_char(sysdate));
+end;
+
+----------------------------------------------------
