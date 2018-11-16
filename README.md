@@ -8,7 +8,7 @@ OracleDatabase 基础知识总结
 3. 实体的码作为关系模式的主键.
 由此，进一步作出关系模型分析表的结构和表之间的关联关系：
 
-![image](http://github.com/OracleDatabaseSummaryimg1.png)
+![image](https://github.com/Jooeys/OracleDatabaseSummary/blob/master/img1.png)
 
 - 在学生成绩数据库设计中， 学生表有4个字段，设置学号student_num为主键；课程表有4个字段，设置课程号course_num主键；分数表有4个字段，设置score id为主键。
 - MySQL通过外键约束来保证表与表之间的数据的完整性和准确性，MySQL通过外键约束来保证表与表之间的数据的完整性和准确性。所以在1对多 通过主键外键的关系来实现，多对多 通过一个中间表来进行实现。
