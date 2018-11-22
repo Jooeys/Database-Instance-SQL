@@ -1,8 +1,8 @@
 --
--- Database: `CinemaDB`
+-- Database: `cinema_DB`
 --
 CREATE DATABASE cinema_DB;
-use cinema_DB;
+USE cinema_DB;
 
 --
 -- Table structure for table `movie`
@@ -14,7 +14,7 @@ CREATE TABLE `movie` (
   `Genre` varchar(128) NOT NULL,
   `RealeaseDate` date NOT NULL,
   `Income` int(254) NOT NULL,
-  CONSTRAINT IC_Realisator_FK FOREIGN KEY(Id) REFERENCES Realisator (Id)
+  CONSTRAINT Movie_Realisator_FK FOREIGN KEY(Id) REFERENCES Realisator (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -50,4 +50,4 @@ INSERT INTO `realisator` (`Id`, `Firstname`, `LastName`, `Birthday`, `nationalit
 (1, 'James', 'Camer', '1954-08-14', 'Canadian'),
 (2, 'Georg', 'Lucas', '1954-05-14', 'American'),
 (3, 'Alfre', 'Hitch', '1899-06-30', 'British'),
-(4, 'Rolan', 'Emmer', '1955-08-10', 'German')
+(4, 'Rolan', 'Emmer', '1955-08-10', 'German');
